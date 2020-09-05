@@ -209,15 +209,18 @@ public class CalendarDateTest {
     }
 
     @Test
-    public void dayBeforeTest() {
-        CalendarDate date = new CalendarDate(2020, 10, 14);
-        CalendarDate limit = new CalendarDate(2020, 10, 13);
-        Assertions.assertEquals(0, date.daysUntil(limit), "Day before test failed");
+    public void thirtyOneDaysMonthTest() {
+        CalendarDate date = new CalendarDate(2020, 1, 29);
+        CalendarDate limit = new CalendarDate(2020, 2, 1);
+        Assertions.assertEquals(3, date.daysUntil(limit), "Month with 31 days test failed");
     }
 
-    // 30 days month test
-
-    // 31 days month test
+    @Test
+    public void thirtyDaysMonthTest() {
+        CalendarDate date = new CalendarDate(2020, 11, 29);
+        CalendarDate limit = new CalendarDate(2020, 12, 1);
+        Assertions.assertEquals(2, date.daysUntil(limit), "Month with 30 days test failed");
+    }
 
     @Test
     public void leapYearTest() {
@@ -247,5 +250,9 @@ public class CalendarDateTest {
         Assertions.assertEquals(2, date.daysUntil(limit), "Non leap year test failed");
     }
 
-    // 1582 tests
+    // TODO NDo: 1582 tests
+
+    // TODO NDo: extra tests zoals over de jaargrens? Over twee jaar?
+
+    // TODO NDo: maxint overflow test?
 }
